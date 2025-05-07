@@ -86,3 +86,11 @@ vim.api.nvim_create_autocmd("FileType", {
         vim.keymap.set('n', '<Tab>', '<C-w>w', { buffer = true })
     end,
 })
+
+-- Move selected line(s) up or down in visual mode
+vim.keymap.set("x", "<A-j>", ":move '>+1<CR>gv=gv")
+vim.keymap.set("x", "<A-k>", ":move '<-2<CR>gv=gv")
+
+-- Move current line up or down in normal mode
+vim.keymap.set("n", "<A-j>", ":m .+1<CR>==")
+vim.keymap.set("n", "<A-k>", ":m .-2<CR>==")

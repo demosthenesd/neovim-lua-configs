@@ -13,8 +13,30 @@ return {
             }
         end,
     },
+    {
+        "nvim-tree/nvim-tree.lua",
+        config = function()
+            require("nvim-tree").setup({
+                filters = {
+                    dotfiles = false,
+                },
+                git = {
+                    enable = true,
+                    ignore = false,
+                },
+                on_attach = function(bufnr)
+                    local api = require("nvim-tree.api")
 
-    { "nvim-tree/nvim-tree.lua" },
+                    -- ✅ This loads all default keybindings, including `y`, `x`, `p`
+                    api.config.mappings.default_on_attach(bufnr)
+
+                    -- ✅ You can still override specific ones here if you want
+                    vim.keymap.set('n', '<Tab>', '<C-w>w', { buffer = bufnr })
+                end,
+            })
+        end,
+    },
+
     { "nvim-tree/nvim-web-devicons" },
     { "folke/tokyonight.nvim" },
 
