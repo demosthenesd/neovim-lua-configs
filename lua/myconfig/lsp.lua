@@ -4,7 +4,7 @@ local lspconfig = require("lspconfig")
 local capabilities = require("blink.cmp").get_lsp_capabilities()
 
 -- Setup your servers with capabilities
-lspconfig.tsserver.setup({
+lspconfig['ts_ls'].setup({
     capabilities = capabilities,
 })
 
